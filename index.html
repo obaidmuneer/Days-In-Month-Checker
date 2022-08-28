@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="findDays(); return false">
+        month <input type="text" id="month">
+        year <input type="text" id="year">
+        <button type="submit">Click Here</button>
+    </form>
+    <h3 id="result">Please enter something</h3>
+
+
+    <script>
+
+        function findDays() {
+            let month = +document.querySelector('#month').value
+            let year = +document.querySelector('#year').value
+            let result = document.querySelector('#result')
+
+
+            let msg = ''
+            if (month < 1 || month > 12) {
+                msg = 'Invalid Month'
+                result.innerHTML = msg
+                console.log(msg);
+                return
+            }
+
+            if (month === 2) {
+                if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+                    msg = 'this month has 28 days'
+                } else {
+                    msg = 'this month has 29 days'
+                }
+            }
+
+            if (month === 4 || month === 6 || month === 9 || month === 11) {
+                msg = 'This month has 30 days'
+            } else {
+                msg = 'this month has 31 days'
+            }
+            result.innerHTML = msg
+        }
+    </script>
+</body>
+
+</html>
